@@ -1,6 +1,9 @@
 node_modules
 package-lock.json
 build/release
+library/vendor
+templates/library/vendor
+templates/library/composer.lock
 
 # Version and manifest files
 /component/*.xml
