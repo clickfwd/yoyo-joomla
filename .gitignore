@@ -1,0 +1,12 @@
+node_modules
+package-lock.json
+build/release
+
+# Version and manifest files
+/component/*.xml
+/modules/*/*/*.xml
+/plugins/*/*/*.xml
+
+# Language files (symlinked)
+/modules/*/*/language/*
+/plugins/*/*/language/*

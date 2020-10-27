@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8.0" type="package" method="upgrade">
+  <packagename>[EXTENSION_ALIAS]</packagename>
+  <packager>ClickFWD, LLC</packager>
+  <packagerurl>https://getyoyo.dev</packagerurl>
+  <name>Yoyo</name>
+  <description>[EXTENSION_DESC]</description>
+  <version>[RELEASE_VERSION]</version>
+  <creationDate>[DATE]</creationDate>
+
+[MANIFEST_COPYRIGHT]
+
+  <!-- List of extensions to install -->
+  <files>
+    <!-- Component -->
+    <!-- <file type="component" id="com_[EXTENSION_ALIAS]">component</file> -->
+
+    <!-- Modules -->
+    <file type="module" client="site" id="mod_[EXTENSION_ALIAS]">mod_[EXTENSION_ALIAS]</file>
+    <file type="module" client="administrator" id="mod_[EXTENSION_ALIAS]_admin">mod_[EXTENSION_ALIAS]_admin</file>
+
+    <!-- Library -->
+    <file type="library" id="lib_[EXTENSION_ALIAS]">library</file>
+
+    <!-- Plugins: [EXTENSION_ALIAS]  -->
+    <file type="plugin" group="system" id="plg_system_[EXTENSION_ALIAS]">plg_system_[EXTENSION_ALIAS]</file>
+  </files>
+  <!-- Installation script -->
+  <scriptfile>script.[EXTENSION_ALIAS].php</scriptfile>
+  <!-- Update servers -->
+  <updateservers>
+    <server type="extension" priority="1" name="Yoyo">[EXTENSION_CDN]/update-pkg_[EXTENSION_ALIAS].xml</server>
+  </updateservers>
+</extension>

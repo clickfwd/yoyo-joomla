@@ -1,0 +1,21 @@
+{
+    "name": "clickfwd/yoyo-joomla",
+    "description": "Yoyo - Reactive PHP Framework",
+    "type": "yoyo-joomla",
+    "require": {
+        "clickfwd/yoyo": "^0.2"
+    },
+    "license": "GPL 3 or later",
+    "authors": [
+        {
+            "name": "ClickFWD",
+            "email": "info@clickfwd.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type" : "path",
+            "url" : "/Users/alejandro/ClickFWD Dev/Git repositories/yoyo/yoyo"
+        }   
+    ]
+}
