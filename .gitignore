@@ -6,7 +6,6 @@ templates/library/vendor
 templates/library/composer.lock
 
 # Version and manifest files
-/component/*.xml
 /modules/*/*/*.xml
 /plugins/*/*/*.xml
 

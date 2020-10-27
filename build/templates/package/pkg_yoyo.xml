@@ -12,8 +12,6 @@
 
   <!-- List of extensions to install -->
   <files>
-    <!-- Component -->
-    <!-- <file type="component" id="com_[EXTENSION_ALIAS]">component</file> -->
 
     <!-- Modules -->
     <file type="module" client="site" id="mod_[EXTENSION_ALIAS]">mod_[EXTENSION_ALIAS]</file>
@@ -28,7 +26,7 @@
   <!-- Installation script -->
   <scriptfile>script.[EXTENSION_ALIAS].php</scriptfile>
   <!-- Update servers -->
-  <updateservers>
+  <!-- <updateservers>
     <server type="extension" priority="1" name="Yoyo">[EXTENSION_CDN]/update-pkg_[EXTENSION_ALIAS].xml</server>
-  </updateservers>
+  </updateservers> -->
 </extension>
