@@ -6,9 +6,11 @@ templates/library/vendor
 templates/library/composer.lock
 
 # Version and manifest files
-/modules/*/*/*.xml
-/plugins/*/*/*.xml
+modules/*/*/*.xml
+library/*.xml
+package/*.xml
+plugins/*/*/*.xml
 
 # Language files (symlinked)
-/modules/*/*/language/*
-/plugins/*/*/language/*
+modules/*/*/language/*
+plugins/*/*/language/*
