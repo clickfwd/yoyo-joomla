@@ -16,6 +16,7 @@ use Clickfwd\Yoyo\Services\Request as YoyoRequest;
 use Clickfwd\Yoyo\Yoyo;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Uri\Uri;
 
 class plgSystemYoyo extends CMSPlugin
@@ -51,6 +52,10 @@ class plgSystemYoyo extends CMSPlugin
 		$this->yoyo->registerComponentResolver('joomla', JoomlaComponentResolver::class);
 
 		$this->yoyo->bindRequest(new Clickfwd\Yoyo\Joomla\JoomlaRequest());
+
+		PluginHelper::importPlugin('yoyo');
+
+		$this->app->triggerEvent('onYoyoAfterInitialize', [$this->yoyo]);
 
 		// If not a Yoyo update, we are done
 		$request = Yoyo::request();
