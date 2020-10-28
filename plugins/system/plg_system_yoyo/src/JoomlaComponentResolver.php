@@ -52,7 +52,7 @@ class JoomlaComponentResolver extends ComponentResolver
         switch($extensionType)
         {
             case 'component':
-                $path = JPATH_BASE."/component/com_{$extensionName}/yoyo/components/{$name}.php";
+                $path = JPATH_BASE."/component/com_{$extensionName}/yoyo/views";
                 break;  
 
             case 'module':
@@ -71,19 +71,21 @@ class JoomlaComponentResolver extends ComponentResolver
     {
         [$extensionType,$extensionName] = explode('.',$source);
 
+        $className = YoyoHelpers::studly($extensionName);
+
         switch($extensionType)
         {
             case 'component':
-                $path = JPATH_BASE."/component/com_{$extensionName}/yoyo/components/{$name}.php";
+                $path = JPATH_BASE."/component/com_{$extensionName}/yoyo/components/{$className}.php";
                 
-                $className = 'Yoyo\Components\\'.YoyoHelpers::studly($extensionName).'\\'.YoyoHelpers::studly($name);
+                $className = 'Yoyo\Components\\'.YoyoHelpers::studly($extensionName).'\\'.$className;
                 
             break;
 
             case 'module':
-                $path = JPATH_BASE."/modules/mod_{$extensionName}/yoyo/components/{$name}.php";
+                $path = JPATH_BASE."/modules/mod_{$extensionName}/yoyo/components/{$className}.php";
             
-                $className = 'Yoyo\Modules\\'.YoyoHelpers::studly($extensionName).'\\'.YoyoHelpers::studly($name);
+                $className = 'Yoyo\Modules\\'.YoyoHelpers::studly($extensionName).'\\'.$className;
                 
             break;  
         }
