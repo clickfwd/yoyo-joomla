@@ -113,7 +113,7 @@ The system plugin automatically sets the Yoyo update route for you, so whenever 
 
 ## Creating Custom Resolvers
 
-The Yoyo system plugins includes a `onYoyoAfterInitialize` event, allowing you to extend some of the plugin functionality, like creating your own Yoyo component resolvers.
+The Yoyo System Plugin triggers an `onYoyoAfterInitialize` event, allowing you to extend some of the plugin functionality, like adding your own Yoyo component resolvers.
 
 For example, you could use this to allow Yoyo to load Yoyo component class and template files from any directory on your site.
 
