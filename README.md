@@ -1,6 +1,6 @@
 # Yoyo Joomla
 
-Yoyo Joomla is an implementation of the [Yoyo framework](https://github.com/clickfwd/yoyo) so you can easily incorporate reactive Yoyo on Joomla sites.
+Yoyo Joomla is an implementation of the [Yoyo Reactive PHP Framework](https://github.com/clickfwd/yoyo) so you can easily incorporate reactive Yoyo components on Joomla sites.
 
 The Yoyo System Plugin automatically loads the necessary Javascript and CSS files as needed, and it works in the site's front-end and administration.
 
