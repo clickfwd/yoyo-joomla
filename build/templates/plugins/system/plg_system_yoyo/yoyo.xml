@@ -19,8 +19,4 @@
     <filename plugin="[EXTENSION_ALIAS]">[EXTENSION_ALIAS].php</filename>
 		<folder>src</folder>
   </files>
-  <!-- Update servers -->
-  <!-- <updateservers>
-    <server type="extension" priority="1" name="Yoyo">[EXTENSION_CDN]/update-plg_system_[EXTENSION_ALIAS].xml</server>
-  </updateservers> -->
 </extension>

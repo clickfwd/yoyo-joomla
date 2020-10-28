@@ -27,6 +27,6 @@
   <scriptfile>script.[EXTENSION_ALIAS].php</scriptfile>
   <!-- Update servers -->
   <!-- <updateservers>
-    <server type="extension" priority="1" name="Yoyo">[EXTENSION_CDN]/update-pkg_[EXTENSION_ALIAS].xml</server>
+    <server type="extension" name="Yoyo - Reactive PHP Framework">[EXTENSION_CDN]/update-pkg_[EXTENSION_ALIAS].xml</server>
   </updateservers> -->
 </extension>

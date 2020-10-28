@@ -17,18 +17,4 @@
     <language tag="en-GB">language/en-GB/en-GB.mod_[EXTENSION_ALIAS]_admin.ini</language>
     <language tag="en-GB">language/en-GB/en-GB.mod_[EXTENSION_ALIAS]_admin.sys.ini</language>
   </languages>
-  <!-- Update servers -->
-  <!-- <updateservers>
-    <server type="extension" priority="1" name="Yoyo">[EXTENSION_CDN]/update-mod_[EXTENSION_ALIAS].xml</server>
-  </updateservers> -->
-  <!-- <config>
-    <fields name="params">
-      <fieldset name="basic">
-        <field name="domain" type="url" label="MOD_[TRANSLATION_KEY]_URL_LABEL" description="MOD_[TRANSLATION_KEY]_URL_DESCRIPTION" hint="https://www.example.com" filter="url" validate="url" />
-      </fieldset>
-      <fieldset name="advanced">
-        <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
-      </fieldset>
-    </fields>
-  </config> -->
 </extension>
