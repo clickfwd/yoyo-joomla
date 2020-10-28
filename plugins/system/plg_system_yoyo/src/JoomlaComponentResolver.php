@@ -75,17 +75,23 @@ class JoomlaComponentResolver extends ComponentResolver
         {
             case 'component':
                 $path = JPATH_BASE."/component/com_{$extensionName}/yoyo/components/{$name}.php";
-                break;  
+                
+                $className = 'Yoyo\Components\\'.YoyoHelpers::studly($extensionName).'\\'.YoyoHelpers::studly($name);
+                
+            break;
 
             case 'module':
                 $path = JPATH_BASE."/modules/mod_{$extensionName}/yoyo/components/{$name}.php";
-                break;  
+            
+                $className = 'Yoyo\Modules\\'.YoyoHelpers::studly($extensionName).'\\'.YoyoHelpers::studly($name);
+                
+            break;  
         }
 
         if (file_exists($path)) {
             require_once($path);
 
-            return 'Yoyo\Modules\\'.YoyoHelpers::studly($extensionName).'\\'.YoyoHelpers::studly($name);
+            return $className;
         }
     }
 }
