@@ -43,7 +43,7 @@ class plgSystemYoyo extends CMSPlugin
 		
 		// $url = '/index.php?option=com_ajax&group=system&plugin=yoyo&format=raw';
 		
-		$url = '/index.php?yoyo&format=raw';
+		$url = '/index.php?format=raw';
 
 		$this->yoyo->configure([
 		  'url' => rtrim(Uri::base(),'/').$url,
