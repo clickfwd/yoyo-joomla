@@ -2,9 +2,10 @@
  * webpack.config.js
  *
  * @license   License GNU General Public License version 2 or later; see LICENSE.txt
- * @author    ClickFWD <info@clickfwd.com>
- * @copyright (c) 2020 ClickFWD, LLC. All rights reserved.
+ * @author    Andrea Gentil - Anibal Sanchez <team@extly.com>
+ * @copyright (c)2012-2020 Extly, CB. All rights reserved.
  *
+ * Modified by ClickFWD
  */
 
 // Array of Webpack plugins

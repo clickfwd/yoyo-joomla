@@ -12,6 +12,6 @@ library/*.xml
 package/*.xml
 plugins/*/*/*.xml
 
-# Language files (symlinked)
+# Language files
 modules/*/*/language/*
 plugins/*/*/language/*
