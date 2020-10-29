@@ -19,97 +19,183 @@ Download the zip file and install using the Joomla installer. The Yoyo system pl
 
 To see the included module demos, publish the site and administrator modules and assign them to visible positions on your site and administrator templates.
 
-## Developing with Yoyo
+## Developing with Yoyo in Joomla
 
-To use Yoyo in Joomla modules and Joomla components, create a `yoyo` directory in the module or component root folder. 
+Refer to the [Yoyo documentation](https://github.com/clickfwd/yoyo). You can add Yoyo reactive components in Joomla components, modules, plugins, and templates in both front-end and administration.
 
-The directory structure for a `mod_shopping_cart` module looks like this:
+### Joomla Components
+
+Create a `yoyo` directory in the Joomla component root.
 
 ```files
-\mod_shopping_cart
+com_foo_bar
 `-- \yoyo
     |-- \components
     `-- \views
 ```
-Place the Yoyo component classes inside the `components` directory and the templates inside the `views` directory.
 
-For reference, take a look at the code for the included demo Yoyo modules.
-
-## Component Classes and Templates
-
-When creating dynamic components, the naming of PHP classes needs to follow a specific naming convention:
-
-`Yoyo\{ExtensionTypePlural}\{ExtensionName}`
-
-For example, when creating a Joomla module named `mod_shopping_cart`, the Yoyo component class namespace should be:
+Use the following namespace convention for Yoyo classes in Joomla components:
 
 ```php
 <?php
 
-namespace Yoyo\Modules\ShoppingCart;
-```
-
-For a `com_products` Joomla component, the Yoyo component class namespace should be:
-
-```php
-<?php
-
-namespace Yoyo\Components\Products;
-```
-
-As you can see from the Yoyo modules included in the package, you can have more than one Yoyo component within a single Joomla module or Joomla component. And you can name your Yoyo components classes whatever you want within the Joomla module/component namespace. 
-
-For example, for a `Cart` Yoyo component within `mod_shopping_cart`, the Yoyo component class would look like this:
-
-```php
-<?php
-
-namespace Yoyo\Modules\ShoppingCart;
+namespace Yoyo\Components\FooBar;
 
 use Clickfwd\Yoyo\Component;
 
-class Cart extends Component {
+class Counter extends Component {
     // ...
 }
 ```
 
-The corresponding template `cart.php` should be placed inside the `views` directory. 
+To render the Yoyo component in templates use:
 
-The structure for the above example is:
+```php
+<?php echo Yoyo\yoyo_render('counter',[
+    'yoyo:source' => 'component.foo_bar'
+]); ?>
+```
+
+### Modules
+
+Create a `yoyo` directory in the Joomla module root.
 
 ```files
-yoyo
-|-- \components
-    `-- Cart.php
-`-- \views
-    `-- cart.php
+mod_foo_bar
+`-- \yoyo
+    |-- \components
+    `-- \views
 ```
+
+Use the following namespace convention for Yoyo classes in Joomla components:
+
+```php
+<?php
+
+namespace Yoyo\Modules\FooBar;
+
+use Clickfwd\Yoyo\Component;
+
+class Counter extends Component {
+    // ...
+}
+```
+
+To render the Yoyo component in templates use:
+
+```php
+<?php echo Yoyo\yoyo_render('counter',[
+    'yoyo:source' => 'module.foo_bar'
+]); ?>
+```
+
+### Plugins
+
+Create a `yoyo` directory in the Joomla plugin root.
+
+```files
+foo_bar
+`-- \yoyo
+    |-- \components
+    `-- \views
+```
+
+Use the following namespace convention for Yoyo classes in Joomla plugins:
+
+```php
+<?php
+
+namespace Yoyo\Plugins\FooBar;
+
+use Clickfwd\Yoyo\Component;
+
+class Counter extends Component {
+    // ...
+}
+```
+
+If the plugin is within a specific group (i.e. content, system, etc.), then include the group name in the namespace. For example, for a `content` plugin:
+
+```php
+<?php
+
+namespace Yoyo\Plugins\Content\FooBar;
+
+use Clickfwd\Yoyo\Component;
+
+class Counter extends Component {
+    // ...
+}
+```
+
+To render the Yoyo component in templates use:
+
+```php
+<?php echo Yoyo\yoyo_render('counter',[
+    'yoyo:source' => 'plugins.foo_bar'
+]); ?>
+```
+
+And for plugins within specific groups (i.e. content):
+
+```php
+<?php echo Yoyo\yoyo_render('counter',[
+    'yoyo:source' => 'plugins.content.foo_bar'
+]); ?>
+```
+
+### Templates
+
+Create a `yoyo` directory in the Joomla template root
+
+```files
+your-template
+`-- \yoyo
+    |-- \components
+    `-- \views
+```
+
+Use the following namespace convention for Yoyo classes in Joomla templates:
+
+```php
+<?php
+
+namespace Yoyo\Templates;
+
+use Clickfwd\Yoyo\Component;
+
+class Counter extends Component {
+    // ...
+}
+```
+
+To render the Yoyo component in templates use:
+
+```php
+<?php echo Yoyo\yoyo_render('counter',[
+    'yoyo:source' => 'template'
+]); ?>
+```
+
+There's no need to specify the template name because Yoyo automatically resolves the component for the current template.
+
+## Front-end vs. Administration
+
+Yoyo will automatically resolve Yoyo components to the right directories. 
+
+If a front-end request is made, Yoyo will resolve its components only from front-end extensions and templates.
+
+If an administration request is made, Yoyo will resolve its components only from administration extensions and templates. 
 
 ## Rendering Yoyo components
 
-To render the above `Cart` component within the module template you would use the following code:
+You can render any Yoyo component from anywhere on the site as long as the functionality is self contained and loads all the necessary classes. So if you have a Yoyo component in  Joomla plugin, you can call it from within Joomla components, modules and templates, just by referencing the right `yoyo:source`:
 
 ```php
 <?php echo Yoyo\yoyo_render('cart',[
-    'yoyo:source' => 'module.shopping_cart'
+    'yoyo:source' => 'plugin.foo_bar'
 ]); ?>
 ```
-
-As you can see, we are passing a second argument to `yoyo_render` which is a variables array and include the `yoyo:source`. This allows the Joomla Yoyo Component Resolver to figure out where to find the component's files.
-
-If you are developing a `com_products` component, you would use the following render code:
-
-```php
-<?php echo Yoyo\yoyo_render('cart',[
-    'yoyo:source' => 'component.products'
-]); ?>
-```
-
-And then include the component files within the `yoyo` directory inside your component root folder.
-
-## Updating Yoyo components
-
-The system plugin automatically sets the Yoyo update route for you, so whenever a component makes an update request, it automatically executes the update function.
 
 ## Creating Custom Resolvers
 
@@ -117,13 +203,12 @@ The Yoyo System Plugin triggers an `onYoyoAfterInitialize` event, allowing you t
 
 For example, you could use this to allow Yoyo to load Yoyo component class and template files from any directory on your site.
 
-To tell Yoyo to use a different resolver when rendering a Yoyo component, use the `yoyo:resolver` variable. The example below uses a `custom` resolver instead of the default `joomla` resolver.
+To tell Yoyo to use a different resolver when rendering a Yoyo component, use the `yoyo:resolver` variable. The example below uses a `custom` resolver instead of the default `joomla` resolver, to load Yoyo components from the `yoyo` directory in the root of the site. The class namespace used for all Yoyo components is `Yoyo\Custom`.
 
 ```php
 <?php 
 echo Yoyo\yoyo_render($component['name'],[
     'yoyo:resolver' => 'custom',
-    'yoyo:source' => 'module.yoyo'
 ]); 
 ?>
 ```
@@ -151,7 +236,7 @@ class PlgYoyoCustom_Resolver extends CMSPlugin
 		$yoyo->registerComponentResolver('custom', CustomResolver::class);
 	}
 }
-````
+```
 
     /plugins/yoyo/custom_resolver/src/CustomResolver.php
 
@@ -167,47 +252,29 @@ class CustomResolver extends JoomlaComponentResolver
 {
     protected function getViewPath()
     {
-        $name = $this->name;
+        $yoyoComponentName = $this->name;
 
-        [$extensionType,$extensionName] = explode('.',$this->source());
-
-        switch($extensionType)
-        {
-            case 'component':
-                $path = JPATH_BASE."/yoyo/components/{$name}.php";
-                break;  
-
-            case 'module':
-                $path = JPATH_BASE."/yoyo/views";
-                break;  
-        }
+        $path = JPATH_BASE."/yoyo/views";
 
         if (! is_dir($path)) {
-            throw new \Exception("View path not found for Yoyo component [$name] at [{$path}].");
+            throw new \Exception("View path not found for Yoyo component [$yoyoComponentName] at [{$path}].");
         }
 
         return $path;
     }
 
-    protected function autoloadComponentClass($source, $name)
+    protected function autoloadComponentClass()
     {
-        [$extensionType,$extensionName] = explode('.',$source);
+        $yoyoComponentName = $this->name;
+        
+        $path = JPATH_BASE."/yoyo/components/{$yoyoComponentName}.php";
 
-        switch($extensionType)
-        {
-            case 'component':
-                $path = JPATH_BASE."/yoyo/components/{$name}.php";
-                break;  
-
-            case 'module':
-                $path = JPATH_BASE."/yoyo/components/{$name}.php";
-                break;  
-        }
+        $className = YoyoHelpers::studly($yoyoComponentName);
 
         if (file_exists($path)) {
             require_once($path);
 
-            return 'Yoyo\Modules\\'.YoyoHelpers::studly($extensionName).'\\'.YoyoHelpers::studly($name);
+            return 'Yoyo\Custom\\'.YoyoHelpers::studly($className);
         }
     }
 }

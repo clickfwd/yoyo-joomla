@@ -14,7 +14,6 @@ use Clickfwd\Yoyo\Joomla\JoomlaComponentResolver;
 use Clickfwd\Yoyo\Services\Configuration as YoyoConfig;
 use Clickfwd\Yoyo\Services\Request as YoyoRequest;
 use Clickfwd\Yoyo\Yoyo;
-use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Uri\Uri;
@@ -31,8 +30,12 @@ class plgSystemYoyo extends CMSPlugin
 	{
 		define('YOYO_FRAMEWORK', 1);
 		
+		if (! file_exists($library = JPATH_LIBRARIES.'/yoyo/vendor/autoload.php')) {
+			return;
+		}
+		
 		require_once __DIR__.'/src/helpers.php';
-		require_once JPATH_LIBRARIES.'/yoyo/vendor/autoload.php';
+		require_once $library;
 		require_once __DIR__.'/src/JoomlaRequest.php';
 		require_once __DIR__.'/src/JoomlaComponentResolver.php';
 

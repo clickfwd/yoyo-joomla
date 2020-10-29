@@ -49,9 +49,9 @@ class JoomlaRequest implements RequestInterface
         return $output;
     }
 
-    public function input($key, $default = null)
+    public function get($key, $default = null)
     {
-        if (isset($this->dropped[$key])) {
+        if (in_array($key,$this->dropped)) {
             return $default;
         }
 
@@ -71,7 +71,7 @@ class JoomlaRequest implements RequestInterface
 
     public function drop($key)
     {
-        $this->dropped[$key] = true;
+        $this->dropped[] = $key;
     }
 
     public function method()
