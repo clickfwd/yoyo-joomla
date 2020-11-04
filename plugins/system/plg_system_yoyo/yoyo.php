@@ -48,8 +48,6 @@ class plgSystemYoyo extends CMSPlugin
 		$this->yoyo->configure([
 		  'url' => rtrim(Uri::base(),'/').$url,
 		  'scriptsPath' => rtrim(Uri::root(),'/').'/media/lib_yoyo/js/',
-		  // Disabled until a better history caching solution can be implemented
-		  'historyEnabled' => false,
 		]);
 		
 		$this->yoyo->registerComponentResolver('joomla', JoomlaComponentResolver::class);
